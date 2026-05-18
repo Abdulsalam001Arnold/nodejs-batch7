@@ -2,11 +2,13 @@ import "dotenv/config"
 import express from "express"
 import userRoutes from "./routes/user.routes.js"
 import { connectDB } from "./db/index.js"
+import cookieParser from "cookie-parser"
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(express.json())
+app.use(cookieParser())
 app.use("/api", userRoutes)
 
 const start = async () => {
