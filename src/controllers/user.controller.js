@@ -171,3 +171,24 @@ export const deleteUser = async (req, res) => {
         throw new Error(err)
     }
 }
+
+
+export const getProfile = async (req, res) => {
+    try{
+     const user = req.user
+
+     if(!user) {
+        return res.status(404).json({
+            message: "User not found"
+        })
+     }
+
+     return res.status(200).json({
+        message: "Profile fetched successfully",
+        data: user
+     })
+    }catch(err) {
+        console.error(err)
+        throw new Error(err)
+    }
+}
